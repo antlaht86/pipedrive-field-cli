@@ -1,0 +1,30 @@
+{
+  "name": "pipedrive-field-cli",
+  "module": "src/index.tsx",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "bun run src/index.tsx",
+    "test": "bun test",
+    "build": "bun build src/index.tsx --compile --outfile pipedrive-field-cli",
+    "openapi-ts": "npx tsx openapi-ts.ts"
+  },
+  "devDependencies": {
+    "@hey-api/openapi-ts": "^0.93.0",
+    "@types/bun": "latest",
+    "@types/react": "^19.2.14"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@inkjs/ui": "^2.0.0",
+    "ink": "^6.8.0",
+    "ink-ascii": "^0.0.4",
+    "ink-gradient": "^4.0.0",
+    "ink-tab": "^5.2.0",
+    "neverthrow": "^8.2.0",
+    "pipedrive-fetch-until-complete": "^3.0.1",
+    "react": "^19.2.4"
+  }
+}
