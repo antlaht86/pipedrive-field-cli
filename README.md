@@ -28,9 +28,15 @@ Interactive CLI tool for browsing and copying custom fields between Pipedrive in
 
 ## Installation
 
-### From source
+### Prerequisites
 
-Requires [Bun](https://bun.sh) v1.3.0 or later.
+Install [Bun](https://bun.sh) v1.3.0 or later:
+
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
+### From source
 
 ```bash
 git clone https://github.com/your-username/pipedrive-field-cli.git
@@ -41,10 +47,34 @@ bun install
 ### Build standalone binary
 
 ```bash
-bun run build
+# Build a single executable (no Bun needed to run it)
+bun build src/index.tsx --compile --outfile pipedrive-field-cli
+
+# Move to PATH so it's available globally
+sudo mv pipedrive-field-cli /usr/local/bin/
+
+# Now run from anywhere
+pipedrive-field-cli --read-only-api-tokens="TOKEN1,TOKEN2" --target-api-token="TARGET_TOKEN"
 ```
 
-This produces a single `pipedrive-field-cli` executable that runs without Bun installed.
+### Cross-compile for other platforms
+
+```bash
+# macOS Apple Silicon
+bun build src/index.tsx --compile --target=bun-darwin-arm64 --outfile pipedrive-field-cli-macos-arm64
+
+# macOS Intel
+bun build src/index.tsx --compile --target=bun-darwin-x64 --outfile pipedrive-field-cli-macos-x64
+
+# Linux x64
+bun build src/index.tsx --compile --target=bun-linux-x64 --outfile pipedrive-field-cli-linux-x64
+
+# Linux ARM64
+bun build src/index.tsx --compile --target=bun-linux-arm64 --outfile pipedrive-field-cli-linux-arm64
+
+# Windows x64
+bun build src/index.tsx --compile --target=bun-windows-x64 --outfile pipedrive-field-cli-windows-x64.exe
+```
 
 ## Usage
 
